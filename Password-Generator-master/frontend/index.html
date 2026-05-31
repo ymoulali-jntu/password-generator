@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Services</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Password Services</h1>
+            <p>Generate strong passwords and check their strength</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="generator">Password Generator</button>
+            <button class="tab-btn" data-tab="strength">Strength Checker</button>
+            <button class="tab-btn" data-tab="info">Useful Info</button>
+        </nav>
+
+        <main>
+            <!-- Password Generator Tab -->
+            <section id="generator" class="tab-content active">
+                <div class="card">
+                    <h2>Generate a Password</h2>
+                    
+                    <div class="result-box">
+                        <input type="text" id="generated-password" readonly placeholder="Your password will appear here">
+                        <button id="copy-btn" class="icon-btn" title="Copy to clipboard">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="options">
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" id="include-lowercase" checked>
+                            <span class="checkmark"></span>
+                            <span class="label-text">Lowercase letters (a-z)</span>
+                        </label>
+                        
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" id="include-uppercase" checked>
+                            <span class="checkmark"></span>
+                            <span class="label-text">Uppercase letters (A-Z)</span>
+                        </label>
+                        
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" id="include-numbers" checked>
+                            <span class="checkmark"></span>
+                            <span class="label-text">Numbers (0-9)</span>
+                        </label>
+                        
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" id="include-symbols">
+                            <span class="checkmark"></span>
+                            <span class="label-text">Symbols (!@#$...)</span>
+                        </label>
+                    </div>
+
+                    <div class="length-control">
+                        <label for="password-length">Password Length: <span id="length-value">12</span></label>
+                        <input type="range" id="password-length" min="4" max="64" value="12">
+                    </div>
+
+                    <button id="generate-btn" class="primary-btn">Generate Password</button>
+                </div>
+            </section>
+
+            <!-- Strength Checker Tab -->
+            <section id="strength" class="tab-content">
+                <div class="card">
+                    <h2>Check Password Strength</h2>
+                    
+                    <div class="input-group">
+                        <input type="text" id="check-password-input" placeholder="Enter a password to check">
+                        <button id="check-btn" class="primary-btn">Check Strength</button>
+                    </div>
+
+                    <div id="strength-result" class="strength-result hidden">
+                        <div class="strength-meter">
+                            <div class="strength-bar" id="strength-bar"></div>
+                        </div>
+                        <div class="strength-details">
+                            <p id="strength-score"></p>
+                            <ul id="strength-criteria">
+                                <li id="criteria-uppercase">Uppercase letters</li>
+                                <li id="criteria-lowercase">Lowercase letters</li>
+                                <li id="criteria-numbers">Numbers</li>
+                                <li id="criteria-symbols">Symbols</li>
+                                <li id="criteria-length-8">At least 8 characters</li>
+                                <li id="criteria-length-16">At least 16 characters</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Useful Info Tab -->
+            <section id="info" class="tab-content">
+                <div class="card">
+                    <h2>Password Security Guidelines</h2>
+                    
+                    <ul class="info-list">
+                        <li>
+                            <strong>Minimum Length:</strong>
+                            Use a minimum password length of 8 or more characters if permitted.
+                        </li>
+                        <li>
+                            <strong>Character Variety:</strong>
+                            Include lowercase and uppercase alphabetic characters, numbers and symbols if permitted.
+                        </li>
+                        <li>
+                            <strong>Random Generation:</strong>
+                            Generate passwords randomly where feasible rather than using predictable patterns.
+                        </li>
+                        <li>
+                            <strong>Unique Passwords:</strong>
+                            Avoid using the same password twice across multiple user accounts and/or software systems.
+                        </li>
+                        <li>
+                            <strong>Avoid Patterns:</strong>
+                            Avoid character repetition, keyboard patterns, dictionary words, letter or number sequences.
+                        </li>
+                        <li>
+                            <strong>Personal Information:</strong>
+                            Avoid usernames, relative or pet names, romantic links (current or past), and biographical information.
+                        </li>
+                        <li>
+                            <strong>Guessable Info:</strong>
+                            Avoid using information that colleagues or acquaintances might know to be associated with you.
+                        </li>
+                        <li>
+                            <strong>Simple Combinations:</strong>
+                            Do not use passwords which consist wholly of any simple combination of the aforementioned weak components.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Password Services - Built with care</p>
+        </footer>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
